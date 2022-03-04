@@ -22,7 +22,7 @@ def check_sum_of_four(a: List[int], b: List[int],
     for aa in a:
         for bb in b:
             b_summary = aa + bb
-            if b_summary + c[len(c)-1] + d[len(d) - 1] < 0 or b_summary + c[0] + d[0] > 0:
+            if b_summary + c[len(c) - 1] + d[len(d) - 1] < 0 or b_summary + c[0] + d[0] > 0:
                 continue
             for cc in c:
                 c_summary = b_summary + cc
@@ -56,12 +56,12 @@ def check_sum_of_four(a: List[int], b: List[int],
     return count
 
 
+N = 1000
+range_of_values = 20000
 A = []
 B = []
 C = []
 D = []
-N = 1000
-range_of_values = 20000
 for i in range(0, N):
     A.append(random.randint(-range_of_values, range_of_values))
     B.append(random.randint(-range_of_values, range_of_values))
