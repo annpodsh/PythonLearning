@@ -11,7 +11,8 @@ import time
 from typing import List
 
 
-def check_sum_of_four(a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
+def check_sum_of_four(a: List[int], b: List[int],
+                      c: List[int], d: List[int]) -> int:
     a.sort()
     b.sort()
     c.sort()
@@ -59,11 +60,11 @@ A = []
 B = []
 C = []
 D = []
-o = 200
-range1 = 20000
-for i in range(0, o):
-    A.append(random.randint(-range1, range1))
-    B.append(random.randint(-range1, range1))
-    C.append(random.randint(-range1, range1))
-    D.append(random.randint(-range1, range1))
+N = 1000
+range_of_values = 20000
+for i in range(0, N):
+    A.append(random.randint(-range_of_values, range_of_values))
+    B.append(random.randint(-range_of_values, range_of_values))
+    C.append(random.randint(-range_of_values, range_of_values))
+    D.append(random.randint(-range_of_values, range_of_values))
 print(check_sum_of_four(A, B, C, D))
