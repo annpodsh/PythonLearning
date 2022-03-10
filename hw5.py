@@ -14,3 +14,14 @@ assert = custom_range(string.ascii_lowercase, 'g', 'p') == ['g', 'h', 'i', 'j', 
 assert = custom_range(string.ascii_lowercase, 'p', 'g', -2) == ['p', 'n', 'l', 'j', 'h']
 
 """
+from typing import List, Any
+
+
+def make_a_string(*args: str) -> str:
+    result = ""
+    for item in args:
+        result += item
+    return result
+
+
+print(make_a_string("a", "b", "c"))
