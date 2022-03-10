@@ -19,7 +19,19 @@ assert val_1 is val_2
 
 """
 from collections import Callable
+from functools import lru_cache
 
 
 def cache(func: Callable) -> Callable:
-    ...
+    return lru_cache()(lambda *args: func(*args))
+
+
+def sum_of_2(x, y):
+    return x + y
+
+
+a = cache(sum_of_2)
+print(a(1, 2))
+print(a(2, 3))
+print(a(1, 2))
+print(a.cache_info())
