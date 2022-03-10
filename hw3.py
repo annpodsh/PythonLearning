@@ -29,7 +29,6 @@ def combinations(*args: List[Any]) -> List[List]:
                 item_list_copy = item_list.copy()
                 item_list_copy.append(item)
                 result.append(item_list_copy)
-    result.sort()
     return result
 
 
