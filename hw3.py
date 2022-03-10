@@ -18,4 +18,19 @@ from typing import List, Any
 
 
 def combinations(*args: List[Any]) -> List[List]:
-    ...
+    result = []
+    for item in args[0]:
+        result.append([item])
+    for i in range(1, args.__len__(), 1):
+        temp_result = result
+        result = []
+        for item in args[i]:
+            for item_list in temp_result:
+                item_list_copy = item_list.copy()
+                item_list_copy.append(item)
+                result.append(item_list_copy)
+    result.sort()
+    return result
+
+
+print(combinations([1, 2], [3, 4], [5, 6]))
