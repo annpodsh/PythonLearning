@@ -85,17 +85,17 @@ def check_sum_of_four(a: List[int], b: List[int],
         if result:
             index_forward = index + 1
             index -= 1
-            while aabb + cd[index_forward] == 0:
+            while index_forward < len(cd) and aabb + cd[index_forward] == 0:
                 count += 1
                 index_forward += 1
-            while aabb + cd[index] == 0:
+            while index_forward >= 0 and aabb + cd[index] == 0:
                 count += 1
                 index -= 1
     return count
 
 
 N = 1000
-range_of_values = 20000
+range_of_values = 1
 A = []
 B = []
 C = []
