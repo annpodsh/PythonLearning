@@ -19,6 +19,7 @@ def check_sum_of_four(a: List[int], b: List[int],
     d.sort()
     count = 0
     start_time = time.time()
+    """
     for aa in a:
         for bb in b:
             b_summary = aa + bb
@@ -53,6 +54,43 @@ def check_sum_of_four(a: List[int], b: List[int],
                         count += 1
                         index -= 1
         print(time.time() - start_time)
+    """
+    ab = []
+    for aa in a:
+        for bb in b:
+            ab.append(aa + bb)
+    cd=[]
+    for cc in c:
+        for dd in d:
+            cd.append(cc+dd)
+    print("sort")
+    cd.sort()
+    print("sort done")
+    for aabb in ab:
+        left = 0
+        right = len(cd) - 1
+        index = -1
+        result = False
+        while right > left:
+            index = int((left + right) / 2)
+            summary = aabb + cd[index]
+            if summary > 0:
+                right = index - 1
+            elif summary < 0:
+                left = index + 1
+            else:
+                count += 1
+                result = True
+                break
+        if result:
+            index_forward = index + 1
+            index -= 1
+            while aabb + cd[index_forward] == 0:
+                count += 1
+                index_forward += 1
+            while aabb + cd[index] == 0:
+                count += 1
+                index -= 1
     return count
 
 
