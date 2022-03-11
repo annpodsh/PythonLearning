@@ -21,7 +21,7 @@ def combinations(*args: List[Any]) -> List[List]:
     result = []
     for item in args[0]:
         result.append([item])
-    for i in range(1, args.__len__(), 1):
+    for i in range(1, len(args), 1):
         temp_result = result
         result = []
         for item in args[i]:
