@@ -16,11 +16,11 @@ def check_sum_of_four(a: List[int], b: List[int],
     ab = dict()
     for i in a:
         for j in b:
-            ab.update({i + j: ab.get(i * j, 0) + 1})
+            ab.update({i + j: ab.get(i + j, 0) + 1})
     cd = dict()
     for k in c:
         for l in d:
-            cd.update({k + l: ab.get(k * l, 0) + 1})
+            cd.update({k + l: cd.get(k + l, 0) + 1})
     count = 0
     for itemAB in ab:
         count += ab.get(itemAB) * cd.get(-itemAB, 0)
@@ -28,7 +28,7 @@ def check_sum_of_four(a: List[int], b: List[int],
 
 
 N = 1000
-range_of_values = 1000
+range_of_values = 0
 A = []
 B = []
 C = []
