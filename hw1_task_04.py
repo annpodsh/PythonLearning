@@ -13,89 +13,22 @@ from typing import List
 
 def check_sum_of_four(a: List[int], b: List[int],
                       c: List[int], d: List[int]) -> int:
-    a.sort()
-    b.sort()
-    c.sort()
-    d.sort()
+    ab = dict()
+    for i in a:
+        for j in b:
+            ab.update({i * j: ab.get(i * j, 0) + 1})
+    cd = dict()
+    for k in c:
+        for l in d:
+            cd.update({k * l: ab.get(k * l, 0) + 1})
     count = 0
-    start_time = time.time()
-    """
-    for aa in a:
-        for bb in b:
-            b_summary = aa + bb
-            if b_summary + c[len(c) - 1] + d[len(d) - 1] < 0 or b_summary + c[0] + d[0] > 0:
-                continue
-            for cc in c:
-                c_summary = b_summary + cc
-                if c_summary + d[len(d) - 1] < 0 or c_summary + d[0] > 0:
-                    continue
-                left = 0
-                right = len(d) - 1
-                index = -1
-                result = False
-                while right > left:
-                    index = int((left + right) / 2)
-                    summary = c_summary + d[index]
-                    if summary > 0:
-                        right = index - 1
-                    elif summary < 0:
-                        left = index + 1
-                    else:
-                        count += 1
-                        result = True
-                        break
-                if result:
-                    index_forward = index + 1
-                    index -= 1
-                    while c_summary + d[index_forward] == 0:
-                        count += 1
-                        index_forward += 1
-                    while c_summary + d[index] == 0:
-                        count += 1
-                        index -= 1
-        print(time.time() - start_time)
-    """
-    ab = []
-    for aa in a:
-        for bb in b:
-            ab.append(aa + bb)
-    cd=[]
-    for cc in c:
-        for dd in d:
-            cd.append(cc+dd)
-    print("sort")
-    cd.sort()
-    print("sort done")
-    for aabb in ab:
-        left = 0
-        right = len(cd) - 1
-        index = -1
-        result = False
-        while right > left:
-            index = int((left + right) / 2)
-            summary = aabb + cd[index]
-            if summary > 0:
-                right = index - 1
-            elif summary < 0:
-                left = index + 1
-            else:
-                count += 1
-                result = True
-                break
-        if result:
-            index_forward = index + 1
-            index -= 1
-            while index_forward < len(cd) and aabb + cd[index_forward] == 0:
-                count += 1
-                index_forward += 1
-            while index_forward >= 0 and aabb + cd[index] == 0:
-                count += 1
-                index -= 1
+    for itemAB in ab:
+        count += ab.get(itemAB) * cd.get(-itemAB, 0)
     return count
 
 
 N = 1000
-range_of_values = 1
+range_of_values = 1000
 A = []
 B = []
 C = []
