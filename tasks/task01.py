@@ -4,7 +4,7 @@ from typing import Callable
 
 
 def cache(times: int = 1) -> Callable:
-    def decorated_function(func: Callable) -> Callable:
+    def decorate_function(func: Callable) -> Callable:
         times_called = times
         result = None
 
@@ -20,7 +20,7 @@ def cache(times: int = 1) -> Callable:
 
         return cached_func
 
-    return decorated_function
+    return decorate_function
 
 
 @cache(times=2)
