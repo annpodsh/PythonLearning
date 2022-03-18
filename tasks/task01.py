@@ -8,7 +8,7 @@ def cache(times: int = 1) -> Callable:
         times_called = times
         result = None
 
-        def cached_func(*args: List[Any]):
+        def cached_func(*args: List[Any]) -> Any:
             nonlocal times_called
             nonlocal result
             if times_called == times:
