@@ -25,7 +25,5 @@ from functools import reduce
 
 
 def is_armstrong(number: int) -> bool:
-    temp_list = list(str(number))
-    temp_list = list(map(lambda x: int(x), temp_list))
-    temp_list = list(map(lambda x: x ** len(temp_list), temp_list))
-    return reduce(lambda a, b: a + b, temp_list) == number
+    temp_list = list(map(lambda x: int(x) ** len(temp_list), str(number)))
+    return (number >= 0) and reduce(lambda a, b: a + b, temp_list) == number
