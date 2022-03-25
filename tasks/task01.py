@@ -26,11 +26,3 @@ def cache(times: int = 1) -> Callable:
 @cache(times=2)
 def f() -> str:
     return input('? ')
-
-
-print(f())
-print(f())
-print(f())
-print(f())
-print(f())
-print(f())
