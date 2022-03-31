@@ -16,7 +16,7 @@ Check successful cases
         [1.0], [1.5], [2.0], [2.5], [2.9]
     ]
 )
-def test_read_magic_number_success(input_value: float):
+def test_read_magic_number_true(input_value: float):
     path = "test_temp_file"
     with open(path, "w+") as fi:
         fi.write(str(input_value))
@@ -35,7 +35,7 @@ Check unsuccessful cases
         [0.0], [0.5], [-1], [3], [10]
     ]
 )
-def test_read_magic_number_failure(input_value: float):
+def test_read_magic_number_false(input_value: float):
     path = "test_temp_file"
     with open(path, "w+") as fi:
         fi.write(str(input_value))

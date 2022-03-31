@@ -9,8 +9,13 @@ Test for finding in different data and in the same
 @pytest.mark.parametrize(
     ["keywords", "data", "expected_result"],
     [
-        ({"key1": "res1"}, [{"key1": "res1"}, {"key2": "res2"}], [{"key1": "res1"}]),
-        ({"key1": "res1"}, [{"key1": "res1"}, {"key1": "res1"}], [{"key1": "res1"}, {"key1": "res1"}])
+        ({"example_key1": "res_one"},
+         [{"example_key1": "res_one"}, {"wrong_key2": "res2"}],
+         [{"example_key1": "res_one"}]),
+
+        ({"same_key1": "same_res1"},
+         [{"same_key1": "same_res1"}, {"same_key1": "same_res1"}],
+         [{"same_key1": "same_res1"}, {"same_key1": "same_res1"}])
     ]
 )
 def test_make_filter(keywords, data, expected_result):
