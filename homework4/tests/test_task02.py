@@ -7,7 +7,15 @@ Check successful cases
 """
 
 
-# Добавить фикстуры
+def setup():
+    global path
+    path = "test_temp_file"
+    fi = open(path, "w+")
+    fi.close()
+
+
+def teardown():
+    os.remove(path)
 
 
 @pytest.mark.parametrize(
@@ -17,11 +25,9 @@ Check successful cases
     ]
 )
 def test_read_magic_number_true(input_value: float):
-    path = "test_temp_file"
-    with open(path, "w+") as fi:
+    with open(path, "w") as fi:
         fi.write(str(input_value))
     assert homework4.tasks.task02.read_magic_number(path)
-    os.remove(path)
 
 
 """
@@ -36,11 +42,9 @@ Check unsuccessful cases
     ]
 )
 def test_read_magic_number_false(input_value: float):
-    path = "test_temp_file"
-    with open(path, "w+") as fi:
+    with open(path, "w") as fi:
         fi.write(str(input_value))
     assert not homework4.tasks.task02.read_magic_number(path)
-    os.remove(path)
 
 
 """
@@ -55,12 +59,10 @@ Check error cases
     ]
 )
 def test_read_magic_number_error(input_value: str):
-    path = "test_temp_file"
-    with open(path, "w+") as fi:
+    with open(path, "w") as fi:
         fi.write(str(input_value))
     try:
         homework4.tasks.task02.read_magic_number(path)
         assert False
     except ValueError:
         assert True
-    os.remove(path)
