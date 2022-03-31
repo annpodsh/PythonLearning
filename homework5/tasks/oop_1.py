@@ -39,6 +39,10 @@ PEP8 соблюдать строго.
 """
 import datetime
 
+"""
+Homework class, have task text and deadline attributes, and is_active() method, that show if homework is not out of date
+"""
+
 
 class Homework:
     def __init__(self, text: str, deadline: datetime.timedelta):
@@ -48,6 +52,13 @@ class Homework:
 
     def is_active(self):
         return datetime.datetime.now() <= self.created + self.deadline
+
+
+"""
+Student class, have first_name and last_name attributes, 
+and have do_homework() method, 
+that takes Homework instance and returns same Homework instance< if it is not out of date and None otherwise
+"""
 
 
 class Student:
@@ -61,6 +72,14 @@ class Student:
         else:
             print("You are late")
             return None
+
+
+"""
+Teacher class, have first_name and last_name attributes, 
+and have create_homework() method, 
+that takes task text and integer number of days left for doing this homework, and returns Homework instance, 
+that contains task text and timedelta instance with days left
+"""
 
 
 class Teacher:
