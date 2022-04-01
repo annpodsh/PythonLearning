@@ -24,17 +24,6 @@ You will learn:
  - how to run doctests
  - how to write instructions
 
-Instruction:
-- Install Python 3.8 (https://www.python.org/downloads/)
- - Install pytest `pip install pytest`
- - Clone the repository <path your repository>
- - Checkout branch <your branch>
- - Right click on file with doctests
- - Click 'Run 'doctests in <filename>
->>> fizzbuzz(5)
-['1', '2', 'Fizz', '4', 'Buzz']
->>> fizzbuzz(10)
-['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz']
 
 * https://en.wikipedia.org/wiki/Fizz_buzz
 ** Энциклопедия профессора Фортрана page 14, 15, "Робот Фортран, чисть картошку!"
@@ -43,6 +32,19 @@ from typing import List
 
 
 def fizzbuzz(n: int) -> List[str]:
+    """
+    Instruction:
+    - Install Python 3.8 (https://www.python.org/downloads/)
+     - Install pytest `pip install pytest`
+     - Clone the repository <path your repository>
+     - Checkout branch <your branch>
+     - Right click on file with doctests
+     - Click 'Run 'doctests in <filename>
+    >>> fizzbuzz(5)
+    ['1', '2', 'Fizz', '4', 'Buzz']
+    >>> fizzbuzz(10)
+    ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz']
+    """
     result = []
     for i in range(1, n + 1):
         if i % 15 == 0:
