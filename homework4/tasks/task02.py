@@ -34,12 +34,9 @@ returns True if number in an interval [1, 3) and False otherwise
 
 
 def read_magic_number(path: str) -> bool:
-    if os.path.exists(path):
+    try:
         with open(path) as fi:
             result = float(fi.readline())
-            if 1 <= result < 3:
-                return True
-            else:
-                return False
-    else:
-        raise ValueError("Path: " + path + "; do not exist")
+            return 1 <= result < 3
+    except Exception:
+        raise ValueError()
