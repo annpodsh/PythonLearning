@@ -61,8 +61,5 @@ Check error cases
 def test_read_magic_number_error(input_value: str):
     with open(path, "w") as fi:
         fi.write(str(input_value))
-    try:
+    with pytest.raises(ValueError):
         homework4.tasks.task02.read_magic_number(path)
-        assert False
-    except ValueError:
-        assert True
