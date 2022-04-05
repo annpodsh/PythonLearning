@@ -27,13 +27,10 @@ that saves __doc__, __name__ of original function and the original function as _
 
 def my_decorator(original_func: Callable) -> Callable:
     def dec(func: Callable) -> Callable:
-        def wrapper(*args, **kwargs):
-            return func(*args, **kwargs)
-
-        wrapper.__original_func = original_func
-        wrapper.__doc__ = original_func.__doc__
-        wrapper.__name__ = original_func.__name__
-        return wrapper
+        func.__original_func = original_func
+        func.__doc__ = original_func.__doc__
+        func.__name__ = original_func.__name__
+        return func
 
     return dec
 

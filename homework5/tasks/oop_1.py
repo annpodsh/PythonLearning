@@ -66,12 +66,11 @@ class Student:
         self.first_name = first_name
         self.last_name = last_name
 
-    def do_homework(self, homework: Homework):
+    def do_homework(self, homework: Homework) -> Homework:
         if homework.is_active():
             return homework
         else:
             print("You are late")
-            return None
 
 
 """
