@@ -11,18 +11,19 @@ reset_instances_counter - сбросить счетчик экземпляров
 
 
 def instances_counter(cls):
-    class DecoratedClass:
+    class DecoratedClass(cls):
         i = 0
 
         def __init__(self):
+            super().__init__()
             DecoratedClass.i += 1
 
         @classmethod
-        def get_created_instances() -> int:
+        def get_created_instances(cls) -> int:
             return DecoratedClass.i
 
         @classmethod
-        def reset_instances_counter() -> int:
+        def reset_instances_counter(cls) -> int:
             temp = DecoratedClass.i
             DecoratedClass.i = 0
             return temp
