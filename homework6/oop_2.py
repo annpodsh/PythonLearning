@@ -52,6 +52,89 @@ PEP8 соблюдать строго.
 import datetime
 from collections import defaultdict
 
+"""
+Homework class, have task text and deadline attributes, and is_active() method, that show if homework is not out of date
+"""
+
+
+class Human:
+    def __init__(self, first_name: str, last_name: str):
+        self.first_name = first_name
+        self.last_name = last_name
+
+
+class Homework:
+    def __init__(self, text: str, deadline: datetime.timedelta):
+        self.text = text
+        self.deadline = deadline
+        self.created = datetime.datetime.now()
+
+    def is_active(self):
+        return datetime.datetime.now() <= self.created + self.deadline
+
+
+"""
+Student class, have first_name and last_name attributes, 
+and have do_homework() method, 
+that takes Homework instance and returns same Homework instance< if it is not out of date and None otherwise
+"""
+
+
+class HomeworkResult:
+    def __init__(self, author: Student, homework: Homework, solution: str):
+        if not isinstance(homework, Homework):
+            raise TypeError("You gave a not Homework object")
+        self.homework = homework
+        self.author = author
+        self.solution = solution
+        self.created = datetime.datetime.now()
+        pass
+
+
+class DeadLineError(Exception):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+
+class Student(Human):
+    def __init__(self, first_name: str, last_name: str):
+        super().__init__(first_name, last_name)
+
+    def do_homework(self, homework: Homework, solution: str) -> HomeworkResult:
+        if homework.is_active():
+            return HomeworkResult(self, homework, solution)
+        else:
+            raise DeadLineError("You are late")
+
+
+"""
+Teacher class, have first_name and last_name attributes, 
+and have create_homework() method, 
+that takes task text and integer number of days left for doing this homework, and returns Homework instance, 
+that contains task text and timedelta instance with days left
+"""
+
+
+class Teacher(Human):
+    homework_done = defaultdict(lambda: [])
+
+    def __init__(self, first_name: str, last_name: str):
+        super().__init__(first_name, last_name)
+
+    def create_homework(self, task: str, days_left: int) -> Homework:
+        return Homework(task, datetime.timedelta(days_left))
+
+    def check_homework(self, hw_result: HomeworkResult) -> bool:
+        if len(hw_result.solution) > 5:
+            Teacher.homework_done[hw_result.homework.text].append(hw_result)
+            return True
+        else:
+            return False
+
+    def reset_results(self, homework: Homework):
+        Teacher.homework_done.pop(homework.text)
+
+
 
 if __name__ == '__main__':
     opp_teacher = Teacher('Daniil', 'Shadrin')
